@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Hyper Automated Solar O&M</title>
+  <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDq24hKY3zf9T73CtFiVJ9kFZ7dgqz0df8JdESvX5Q7uFeXaHPnr4olhKDEDHhM11pj78&usqp=CAU" type="image/x-icon">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* Style the header */
+    header {
+      background-color: #ffffff;
+      padding: 15px;
+      text-align: center;
+      font-size: 22px;
+      color: black;
+      height: 135px;
+    }
+
+    header img {
+      margin-right: 10px; /* Adjust the margin as needed */
+    }
+
+    /* Create two columns/boxes that float next to each other */
+    nav {
+      float: left;
+      width: 30%;
+      height: 700px;
+      background: #ffffff;
+      padding: 20px;
+    }
+
+    /* Style the list inside the menu */
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    article {
+      float: left;
+      padding: 20px;
+      width: 70%;
+      background-color: #F0F7FD;
+      height: 600px;
+      overflow: auto; /* Add this line to enable scrolling */
+    }
+
+    /* Clear floats after the columns */
+    section::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* Style the footer */
+    footer {
+      background-color: #777;
+      padding: 10px;
+      text-align: center;
+      color: white;
+    }
+
+    /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+    @media (max-width: 600px) {
+      nav,
+      article {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    /* Style the tabs */
+    nav a {
+      display: block;
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: #ddd;
+      text-decoration: none;
+      color: #333;
+      text-align: center;
+    }
+
+    nav a:hover {
+      background-color: #555;
+      color: white;
+    }
+
+    /* Hide all articles by default */
+    article>div {
+      display: none;
+    }
+
+    /* Show the selected tab's content */
+    article>div:target {
+      display: block;
+    }
+
+    label {
+      font-size: 12px;
+      /* Adjust the font size as needed */
+      margin-bottom: 5px;
+    }
+
+    /* Style the form input fields */
+    input {
+      padding: 8px;
+      margin-bottom: 10px;
+      width: 100%;
+    }
+
+    input.small-input {
+      width: 30%;
+    }
+
+    /* Style the form submit and reset buttons */
+    input[type="submit"],
+    input[type="reset"] {
+      width: auto;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      background-color: #FFFFFF
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #000000;
+      color: #FFFFFF;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .small-input {
+      width: 350px; /* Adjust the width as needed */
+      font-size: 20px; /* Adjust the font size as needed */
+      text-align: center;
+    }
+
+    .small-input-container {
+      margin-top: -20px; /* Adjust the margin-top as needed */
+    }
+  </style>
+</head>
+
+<body>
+  <section>
+    <header style="background-image: url('https://cdn-icons-png.freepik.com/512/7364/7364299.png'); background-size: 130px 130px; background-repeat: no-repeat; padding-left: 60px;">
+      <h1>HYPER AUTOMATED SOLAR O&M ( LEVEL#1 )</h1>
+    </header>
+
+    <nav>
+      <a href="#tab6" class="active" style="background-color: #CCCCCC; color: #fff; text-align: left;"><strong>SECTION1 : INFORMATION</strong></a>
+      <a href="#tab8" style="background-color: #783F04; color: #fff;"><strong>PRE REQUEST</strong></a>
+      <a href="#tab7" style="background-color: #783F04; color: #fff;"><strong>PLANT INPUT DATA</strong></a>
+      <br>
+      <a style="background-color: #CCCCCC; color: #fff; text-align: left;"><strong>SECTION2 : RESULT PREVIEW</strong></a>
+ 
+
+      <a href="#tab0" style="background-color: #073763; color: #fff;"><strong>EXECUTIVE SUMMARY</strong></a>
+      <a href="#tab1" style="background-color: #073763; color: #fff;"><strong>FULL INSPECTION REPORT</strong></a>
+      <a href="#tab2" style="background-color: #073763; color: #fff;"><strong>ANOMALY MAP</strong></a>
+      <a href="#tab3" style="background-color: #073763; color: #fff;"><strong>ANOMALY ANALYSIS & RECOMMENDATIONS</strong></a>
+      <a href="#tab5" style="background-color: #073763; color: #fff;"><strong>THERMO FILM</strong></a>
+      <a href="#tab9" style="background-color: #073763; color: #fff;"><strong>ANOMALY OVERVIEW</strong></a>
+    </nav>
+
+    <article>
+      <!-- Tab 1 Content -->
+      <div id="tab1">
+        <form id="submitForm" action="/action_page.php">
+          <div class="small-input-container">
+            <label for="I1" style="font-size: 18px;">Select Solar Plant Site :</label>
+            <select id="I1" name="I1" class="small-input" onchange="changeIframeSrcTab1(this.value)">
+              <option value="SKK1" data-src="">SKK1</option>
+              <option value="SKK2" data-src="https://drive.google.com/file/d/1X6jd3wYnCjbAxqqLnjICWvPWkgb87kxL/preview">SKK2</option>
+              <option value="SKK3" data-src="https://drive.google.com/file/d/1QYsB41TgkNjS65Jfv6dvW48eiWToUzzv/preview">SKK3</option>
+              <option value="SKK4" data-src="https://drive.google.com/file/d/10kwvEyeQfb-E0mQSNZYdk8WVQyO4OyXu/preview">SKK4</option>
+              <option value="STL1" data-src="https://drive.google.com/file/d/1vRuAfFS5C9G47-bQ3Ss6EXmrTd2TjLXD/preview">STL1</option>
+              <option value="STL2" data-src="https://drive.google.com/file/d/18l17FcgyN1jTHPQoVxuhNa1C-rZ5pYzc/preview">STL2</option>
+              <option value="STL3" data-src="https://drive.google.com/file/d/1jXM26XlWsP9y6tssdaykXhB6bLuOUBdJ/preview">STL3</option>
+            </select>
+
+            <br><br>
+            <label for="I2" style="font-size: 18px;">Inspection Time Period :</label>
+            <select id="I2" name="I2" class="small-input">
+              <option value="Q1 2024">Q1 2024</option>
+              <option value="Q2 2024">Q2 2024</option>
+            </select>
+            <br><br>
+            <input type="submit" value="Preview">
+            <input type="reset" value="Reset">
+          </div>
+        </form>
+
+        <h1>FULL INSPECTION REPORT</h1>
+        <!-- Embedded PDF -->
+        <iframe id="inspectionIframe" width="100%" height="600"></iframe>
+      </div>
+
+
+
+
+      <!-- Tab 2 Content -->
+      <div id="tab2">
+        <form id="submitForm1" action="/action_page.php">
+          <div class="small-input-container">
+           <label for="I3" style="font-size: 18px;">Select Solar Plant Site :</label>
+           <select id="I3" name="I3" class="small-input" onchange="changeIframeSrcTab2(this.value)">
+            <option value="SKK2" data-src="https://drive.google.com/file/d/1PyYTe8I3lXQ40S6TNYWFQWlmRGw2AavU/preview">SKK2</option>
+            <option value="SKK3" data-src="https://drive.google.com/file/d/1Tczewx0cSOMmfFYlFWHF0y1TsCuGlPjN/preview">SKK3</option>
+            <option value="SKK4" data-src="https://drive.google.com/file/d/172eBBE8Bj4xSvpeeQBGtNOiHNMiWcCHZ/preview">SKK4</option>
+            
+          </select>
+          <br><br>
+          <label for="I4" style="font-size: 18px;">Inspection Time Period :</label>
+          <select id="I4" name="I4" class="small-input">
+             <option value="Q1 2024">Q1 2024</option>
+             <option value="Q2 2024">Q2 2024</option>
+          </select>
+          <br><br>
+          <input type="submit" value="Preview">
+          <input type="reset" value="Reset">
+        </div>
+      </form>
+      <h1>ANOMALY MAP</h1>
+      <p>To facilitate the O&M teams precise identification of issues within the real field, the implementation of anomaly markers on the solar plant map becomes imperative. These markers serve as essential indicators, guiding the team to the exact locations that require attention and access.</p>
+      <!-- Embedded Video without Autoplay -->
+      <iframe id="inspectionIframe1" width="100%" height="600"></iframe>
+    </div>
+
+
+      <!-- Tab 3 Content -->
+      <div id="tab3">
+        <form id="submitForm2" action="/action_page.php">
+          <div class="small-input-container">
+           <label for="I5" style="font-size: 18px;">Select Solar Plant Site :</label>
+           <select id="I5" name="I5" class="small-input" onchange="changeIframeSrcTab3(this.value)">
+            <option value="SKK2" data-src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTkgfAuS7-CyMAXamB5U_nu36OMU0KrmAi1EH0uxymaf7hCfr_ppwg204zToGw_8A/pubhtml">SKK2</option>
+            <option value="SKK3" data-src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTyUcUF0yiQ8aVk4Jg2cxcqegi-RL3WK1irpGwy6iAnzwApvWXxBlm1EBxNRk9p-A/pubhtml">SKK3</option>
+            <option value="SKK4" data-src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRHJ1v68XJtqiTeefoOgIzHETU_M8DfQWh776FDh93wdxj0NZXUjJfU47JSzY92ww/pubhtml">SKK4</option>
+            
+          </select>
+          <br><br>
+          <label for="I6" style="font-size: 18px;">Inspection Time Period :</label>
+          <select id="I6" name="I6" class="small-input">
+             <option value="Q1 2024">Q1 2024</option>
+             <option value="Q2 2024">Q2 2024</option>
+          </select>
+          <br><br>
+          <input type="submit" value="Preview">
+          <input type="reset" value="Reset">
+        </div>
+      </form>
+      <h1>ANOMALY ANALYSIS & RECOMMENDATIONS</h1>
+      <p>Presented herein are the recommendations that guide the Operations and Maintenance (O&M) team in prioritizing and planning necessary activities. These recommendations not only identify potential root causes but also quantify their impact.</p>
+      <!-- Embedded Video without Autoplay -->
+      <iframe id="inspectionIframe2" width="100%" height="600"></iframe>
+    </div>
+
+
+      <!-- Tab 0 Content -->
+      <div id="tab0">
+        <form id="submitForm3" action="/action_page.php">
+          <div class="small-input-container">
+           <label for="I7" style="font-size: 18px;">Select Solar Plant Site :</label>
+           <select id="I7" name="I7" class="small-input" onchange="changeIframeSrcTab4(this.value)">
+            <option value="SKK2" data-src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRTO7FcK255l8VwRbZ5gvv_arHFt9yQGUS90JcpQxmk9_Suvp1b1IvykbTe95KPLA/pubhtml">SKK2</option>
+            <option value="SKK3" data-src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQxRnPa07IbDBoH8wPgyeodotCdyrrc6Qs_HsYFan_Yej_aRfIY4jYhtfxHC9L_iw/pubhtml">SKK3</option>
+            <option value="SKK4" data-src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSWxrtqxo-DmL-nevIkgvnlGMxl1OSpzcdUwF-7CEVARCfdjNw6Gtn_xLrL2DzA-Q/pubhtml">SKK4</option>
+            
+          </select>
+          <br><br>
+          <label for="I8" style="font-size: 18px;">Inspection Time Period :</label>
+          <select id="I8" name="I8" class="small-input">
+             <option value="Q1 2024">Q1 2024</option>
+             <option value="Q2 2024">Q2 2024</option>
+          </select>
+          <br><br>
+          <input type="submit" value="Preview">
+          <input type="reset" value="Reset">
+        </div>
+      </form>
+      <h1>EXECUTIVE SUMMARY</h1>
+      <!-- Embedded Video without Autoplay -->
+      <P>In summary, the facility identified anomaly issues through the utilization of SEMI-HYPER-AUTOMATED Solution V2.10. The findings encompassed data on the frequency of each anomaly type, module loss statistics (minimum, maximum, and average), and an accompanying Delta T report, all of which are presented below:</p>
+      <iframe id="inspectionIframe3" width="100%" height="600"></iframe>
+
+     
+     </div>
+
+
+
+ 
+      <!-- Tab 5 Content -->
+      <div id="tab5">
+        <form id="submitForm4" action="/action_page.php">
+          <div class="small-input-container">
+           <label for="I9" style="font-size: 18px;">Select Solar Plant Site :</label>
+           <select id="I9" name="I9" class="small-input" onchange="changeIframeSrcTab5(this.value)">
+            <option value="SKK2" data-src="https://drive.google.com/file/d/14JRpd2Esuyop7V6YZWxyrAUiEzP-NA6I/preview">SKK2</option>
+            <option value="SKK3" data-src="https://drive.google.com/file/d/1uqb_5URuQLZ-dWFtBhvUD-aQFStylydX/preview">SKK3</option>
+            <option value="SKK4" data-src="https://drive.google.com/file/d/1alERoWswkX5O1f-Hqsigj9xVaETVhKHX/preview">SKK4</option>
+            
+          </select>
+          <br><br>
+          <label for="I10" style="font-size: 18px;">Inspection Time Period :</label>
+          <select id="I10" name="I10" class="small-input">
+             <option value="Q1 2024">Q1 2024</option>
+             <option value="Q2 2024">Q2 2024</option>
+          </select>
+          <br><br>
+          <input type="submit" value="Preview">
+          <input type="reset" value="Reset">
+        </div>
+      </form>
+      <h1>THERMO FILM</h1>
+      <!-- Embedded Video without Autoplay -->
+      <iframe id="inspectionIframe4" width="100%" height="600"></iframe>
+    </div>
+
+
+
+      <!-- Tab 9 Content -->
+      <div id="tab9">
+        <form id="submitForm5" action="/action_page.php">
+          <div class="small-input-container">
+           <label for="I11" style="font-size: 18px;">Select Solar Plant Site :</label>
+           <select id="I11" name="I11" class="small-input" onchange="changeIframeSrcTab6(this.value)">
+            <option value="SKK2" data-src="https://drive.google.com/file/d/17F37ROnfnUQpEp5XOnYJQdiHA2a_gshZ/preview">SKK2</option>
+            <option value="SKK3" data-src="https://drive.google.com/file/d/1R2OA7U1lMAyekqFETaGeTgYcAj9HSiHq/preview">SKK3</option>
+            <option value="SKK4" data-src="https://drive.google.com/file/d/1GBGzujMQLBQSyR1CJVtFXLmE5zmzecZP/preview">SKK4</option>
+            
+          </select>
+          <br><br>
+          <label for="I12" style="font-size: 18px;">Inspection Time Period :</label>
+          <select id="I12" name="I12" class="small-input">
+             <option value="Q1 2024">Q1 2024</option>
+             <option value="Q2 2024">Q2 2024</option>
+          </select>
+          <br><br>
+          <input type="submit" value="Preview">
+          <input type="reset" value="Reset">
+        </div>
+      </form>
+      <h1>ANOMALY OVERVIEW</h1>
+      <p>The anomalies identified in the plant are effectively visualized through a pie chart. This graphical representation highlights the top three anomalies, presenting a clear distribution percentage that underscores the most prevalent issues. This analysis offers valuable insights to the Operations and Maintenance (O&M) operator, serving as a comprehensive overview of the solar plants overall health. The prioritization of these anomalies allows for strategic decision-making and targeted interventions to ensure optimal performance and longevity. </p>
+      <!-- Embedded Video without Autoplay -->
+      <iframe id="inspectionIframe5" width="100%" height="600"></iframe>
+    </div>
+
+
+
+      <!-- Tab 6 Content -->
+      <div id="tab6" style="display: block;">
+        <h1>HYPER AUTOMATED SOLAR O&M</h1>
+        <p>Hyper Automated Solar O&amp;M, standing at the forefront of cutting-edge technology, represents a revolutionary approach
+          to Solar Operations and Maintenance. This innovative system integrates advanced automation, artificial intelligence,
+          and real-time monitoring to redefine how we manage and optimize solar energy infrastructure. By leveraging state-of-the-art
+          technologies, Hyper Automated Solar O&amp;M ensures unparalleled efficiency, predictive maintenance, and proactive problem-solving.
+          This paradigm shift in solar management heralds a new era of sustainability, where solar energy systems operate at peak
+          performance, contributing to a greener and more sustainable future.</p>
+        <br>
+        <h3><strong>PROCEDURE GUIDE: HYPER AUTOMATED SOLAR O&M LEVEL 1 QUICK USER MANUAL</strong></h3><br>
+        <ol>
+          <li>Prepare and submit preliminary information at least two weeks prior to the initial drone flight, this process will be single time setup and spend time not more than 2 weeks for the whole process </li>
+              <ol>
+                 1.1 Provide necessary plant information</br>
+                 1.2 Fill-in PV module specification, PV design parameters and SLD / layout uploading to system ( please make sure that all document have been updated to the lastest version</br>
+                 1.3 Fill-in Inverter information</br>
+                 1.4 Submit all data and wait for ecosystem setting up
+              </ol>
+          <li>Submit the required information promptly upon the completion of the drone flight</li>
+              <ol>
+                 2.1 Upload drone thermal image to sharepoint and copy link to link upload tab</br>
+                 2.2 Submit all data and wait for Hyper Automated Solar O&M processing, in general cases, it will take time to processing within 1 hr and result will be automatically update to the system
+              </ol>
+          <li>See result preview base on analyzing on 6 tabs/li>
+              <ol>
+                 3.1 Executive Summary</br>
+                 3.2 Full Inspection Report</br>
+                 3.3 Anomaly Map </br>
+                 3.4 Anomaly Analysis & Recommendations</br>
+                 3.5 Thermo Film</br>
+                 3.6 Anomaly Overview
+              </ol>
+              
+          <li>Download full report directly from any tab for your customized purpose</li>
+
+        </ol>
+
+        <br>
+        
+        <p>FLOW DIAGRAM FOR HYPER AUTOMATED SOLAR O&M LEVEL#1</p>
+        <div style="width: 640px; height: 360px; overflow: hidden; position: relative; display: flex; justify-content: center; align-items: center;">
+           <div style="position: absolute; top: 0; left: 0;">
+               <!-- Embedded image using Google Drive Viewer -->
+               <iframe src="https://drive.google.com/file/d/1jmjftkpjzLGzPSazr6tX1P7iVgrZ9Lt2/preview" 
+                   width="640" height="360" style="border: none;"></iframe>
+           </div>
+        </div>
+
+
+
+
+        <h3>POTENTIAL CASE EXAMPLES DETECTED BY HYPER AUTOMATED SOLAR O&M ( LEVEL#1 )</h3>
+
+        <table>
+          <tr>
+            <th>Themal Image</th>
+            <th>Description</th>
+            <th>Possible Failure Reason</th>
+            <th>Electical measurements</th>
+            <th>Safety</th>
+            <th>Power</th>
+
+          </tr>
+
+          <tr>
+             <td><img src="data:image/jpeg;base64,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" alt="Icon" style="width: 180px; height: 120px;"></td><td>One module warmer than others</td>
+            <td>Module is open circuited - not connected to the system</td>
+            <td>Module normally fully functional</td>
+            <td>A</td>
+            <td>System failure</td>
+          </tr>
+
+
+          <tr>
+            <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqcEIFNW_pX_vNZmxu5tPZgiXV0cKauZdfTYKvyD9XGge5v8yGDrUiSjkmnh4Vh4Jnj-w&usqp=CAU" alt="Icon" style="width: 180px; height: 120px;"></td>
+            <td>One row (substring) is warmer than other rows in the module</td>
+            <td>Short circuited (SC) or open substring - Bypass diode SC, or - Internal SC
+            <td>Sub-strings power lost, reduction of Voc</td>
+            <td>B(f)</td>
+            <td>const. or E</td>
+          </tr>
+
+          <tr>
+            <td><img src="https://img.saurenergy.com/2019/03/sample-thermography-image-of-ok-and-not-ok-module.jpg" alt="Icon" style="width: 180px; height: 120px;"></td>
+            <td>Single cells are warmer, not any pattern (patchwork pattern) is recognized</td>
+            <td>Whole module is short circuited - All bypass diodes SC or - Wrong connection</td>
+            <td>Module power drastically reduced, (almost zero) strong reduction of Voc</td>
+            <td>A when ext. SC, B(f) when Diode SC</td>
+            <td>const. or E</td> 
+          </tr>
+          <tr>
+            <td><img src="https://gienergy.com.au/wp-content/uploads/2020/03/20200409T101040.jpg" alt="Icon" style="width: 180px; height: 120px;"></td>
+            <td>ASingle cells are warmer, lower parts and close to frame hotter than upper and middle parts.</td>
+            <td>Massive shunts caused by potential induced degradation (PID) and/or polarization</td>
+            <td>Module power and FF reduced. Low light performance more affected than at STC</td>
+            <td>A</td>
+            <td>C (v,h,t)</td> 
+          </tr>
+          <tr>
+            <td><img src="https://globalsolarsolutions.com.au/wp-content/uploads/2021/09/solar_panel_thermal_inspection.jpg" alt="Icon" style="width: 180px; height: 120px;"></td>
+            <td>One cell clearly warmer than the others</td>
+            <td>Shadowing effects - Defect cell - Delaminated cell</td>
+            <td>Power decrease not necessarily permanent, e.g. shadowing leaf or lichen</td>
+            <td>A , B(f)</td>
+            <td>A , B or C(m,tc,h)</td> 
+          </tr>
+          <tr>
+            <td><img src="https://thermalfocus.eu/wp-content/uploads/2021/12/FLIR2330-300x225-1.jpg" alt="Icon" style="width: 180px; height: 180px;"></td>
+            <td>Part of a cell is warmer</td>
+            <td>Broken cell - Disconnected string interconnect</td>
+            <td>Drastic power reduction, FF reduction</td>
+            <td>A , B(f)</td>
+            <td>A , B or C(m,tc,h)</td> 
+          </tr>
+          <tr>
+            <td><img src="https://www.researchgate.net/profile/Akash-Chaudhary-6/publication/321772439/figure/fig1/AS:571216425480192@1513200016505/a-and-fig-9b-shows-normal-photograph-and-thermal-image-of-cement-deposits-observed_Q320.jpg" alt="Icon" style="width: 180px; height: 120px;"></td><td>Pointed heating</td>
+            <td>- Artifact - Partly shadowed, e.g. bird dropping, lightning protection rod</td>
+            <td>Power reduction, dependent on form and size of the cracked part</td>
+            <td>A , B(f)</td>
+            <td>C(m,tc)</td> 
+          </tr>
+          <tr>
+            <td><img src="https://miro.medium.com/v2/resize:fit:679/0*_GDFIuTOx6KBOjfV.jpg" alt="Icon" style="width: 180px; height: 120px;"></td><td>Sub-string part remarkably hotter than others when equally shaded</td>
+            <td>Sub-string with missing or open-circuit bypass diode</td>
+            <td>Massive Isc and power reduction when part of this sub-string is shaded</td>
+            <td>A , B(f)</td>
+            <td>A, C</td> 
+
+          </tr>
+            <td><img src="https://solarsharc.com/wp-content/uploads/2017/09/Cover-for-drone-video.jpg" alt="Icon" style="width: 180px; height: 120px;"></td>
+            <td>Heat spot at the edge and bottom corner of panel</td>
+            <td>Soilling and dirty from water traped at the frame</td>
+            <td>Massive Isc and power reduction when part of this sub-string is shaded</td>
+            <td>A , B(f)</td>
+            <td>A, C</td> 
+
+          </tr>
+
+
+
+
+
+        </table>
+
+
+
+
+
+      </div>
+
+
+      <!-- Tab 7 Content - PDF -->
+      <div id="tab7">
+
+
+          <div class="w-full px-4 md:w-1/2 lg:w-1/3">
+             <div class="relative z-10 mb-10 overflow-hidden rounded-xl bg-white px-8 py-10 shadow-pricing dark:bg-dark-2 sm:p-12 lg:px-6 lg:py-10 xl:p-14">
+                <h4 class="mb-5 block text-xl font-medium text-dark dark:text-white">
+                  Plant & Neccesary Information Input
+                </h4>
+                <div class="mb-[50px]">
+                   <form name="submit-to-google-sheet" id="submitForm6">
+                     <div class="flex flex-col gap-[14px]">
+
+                       <label for="Plant Name">Plant Name:</label>
+                       <input type="text" id="Plant Name" name="Plant Name" value="XXXX" class="border border-gray-300 p-2">
+                       <label for="P94">Link for uplade thermal image (provide URL of sharepoint) :</label><br>
+                       <label for="Link1">Link1 (main):</label>
+                       <input type="text" id="Link1" name="Link1" value="WWW.O365.com/datasharing" class="border border-gray-300 p-2"><br>
+                       <label for="P96">Link2 (optional):</label>
+                       <input type="text" id="Link2" name="Link2" value="WWW.O365.com/datasharing" class="border border-gray-300 p-2"><br>
+                       <label for="P97">Link3 (optional):</label>
+                       <input type="text" id="Link3" name="Link3" value="WWW.O365.com/datasharing" class="border border-gray-300 p-2" ><br>
+
+
+
+
+                       <label for ="setdate">Drone Inspection Date ( DD/MM/YY )</label>
+                       <input type="date" id="Inspection Date" name="Inspection Date">
+                       <p class="text-base text-body-color dark:text-dark-6"><br>
+
+                       <label for="P90">Tricker:</label>
+                       <input type="text" id="Tricker" name="Tricker" value="1" class="border border-gray-300 p-2" ><br>
+
+
+                     </div>
+                     <button type="submit" class="inline-block rounded-md bg-primary px-7 py-3 text-center text-base font-medium text-white transition hover:bg-blue-dark">
+                       submit
+                     </button>
+                   </form>
+                </div>
+             </div>
+          </div>
+
+      </div>
+
+
+
+      <!-- Tab 8 Content - PDF -->
+      <div id="tab8">
+
+
+          <div class="w-full px-4 md:w-1/2 lg:w-1/3">
+             <div class="relative z-10 mb-10 overflow-hidden rounded-xl bg-white px-8 py-10 shadow-pricing dark:bg-dark-2 sm:p-12 lg:px-6 lg:py-10 xl:p-14">
+                <h4 class="mb-5 block text-xl font-medium text-dark dark:text-white">
+                  Pre-Request Data (Recommend submitting preliminary information at least two weeks prior to the initial drone flight)
+                </h4>
+                <h4 class="mb-5 block text-xl font-medium text-dark dark:text-white">
+                  Plant & Neccesary Information Input
+                </h4>
+                <div class="mb-[50px]">
+                   <form name="submit-to-google-sheet" id="submitForm7">
+                     <div class="flex flex-col gap-[14px]">
+
+                       <label for="Plant Name">Plant Name:</label>
+                       <input type="text" id="Plant Name" name="Plant Name" value="XXXX" class="border border-gray-300 p-2">
+                       <label for="Location">Plant Location Name:</label>
+                       <input type="text" id="Location" name="Location" value="Saraburi" class="border border-gray-300 p-2">
+                       <label for="Latitude">Plant Latitude ( In degree ):</label>
+                       <input type="text" id="Latitude" name="Latitude" value="14" class="border border-gray-300 p-2">
+                       <label for="Longitude">Plant Longitude ( In degree ):</label>
+                       <input type="text" id="Longitude" name="Longitude" value="101" class="border border-gray-300 p-2">
+                       <label for="P13">Plant Life ( Yr. ):</label>
+                       <input type="text" id="Life" name="Life" value="5" class="border border-gray-300 p-2"><br>
+
+
+
+                       <label for="P51">Install_Cap ( KW ):</label>
+                       <input type="text" id="Install_Cap" name="Install_Cap" value="5000" class="border border-gray-300 p-2"><br>
+
+                       <label for="P52">Yield:</label>
+                       <input type="text" id="Yield" name="Yield" value="4.3" class="border border-gray-300 p-2"><br>
+
+                       <label for="P53">PR:</label>
+                       <input type="text" id="PR" name="PR" value="0.80" class="border border-gray-300 p-2"><br>
+
+                       <label for="P53">Electricity_cost:</label>
+                       <input type="text" id="Electricity_cost" name="Electricity_cost" value="4.0" class="border border-gray-300 p-2"><br>
+
+                       <label for="P53">Degrade:</label>
+                       <input type="text" id="Degrade" name="Degrade" value="0.40" class="border border-gray-300 p-2"><br>
+
+
+
+
+                     </div>
+                     <button type="submit" class="inline-block rounded-md bg-primary px-7 py-3 text-center text-base font-medium text-white transition hover:bg-blue-dark">
+                       submit
+                     </button>
+                   </form>
+                </div>
+             </div>
+          </div>
+          <div class="w-full px-4 md:w-1/2 lg:w-1/3">
+             <div class="relative z-10 mb-10 overflow-hidden rounded-xl bg-white px-8 py-10 shadow-pricing dark:bg-dark-2 sm:p-12 lg:px-6 lg:py-10 xl:p-14">
+                <h4 class="mb-5 block text-xl font-medium text-dark dark:text-white">
+                  PV & Inverter Information Input
+                </h4>
+                <div class="mb-[50px]">
+                   <form name="submit-to-google-sheet" id="submitForm8">
+                     <div class="flex flex-col gap-[14px]">
+
+                       <!-- Additional PV and Inverter fields -->
+                       <label for="PV Brand">PV Brand:</label>
+                       <input type="text" id="PV Brand" name="PV Brand" value="LONGI" class="border border-gray-300 p-2">
+                       <label for="PV Module">PV Module:</label>
+                       <input type="text" id="PV Module" name="PV Module" value="Hi-MO 5m" class="border border-gray-300 p-2">
+                       <label for="PV Quantity">PV Quantity (panels):</label>
+                       <input type="text" id="PV Quantity" name="PV Quantity" value="5000" class="border border-gray-300 p-2">
+                       <label for="PV String">PV String Layout (panels/string):</label>
+                       <input type="text" id="PV String" name="PV String" value="18" class="border border-gray-300 p-2">
+
+                       <label for="Inverter Brand">Inverter Brand:</label>
+                       <input type="text" id="Inverter Brand" name="Inverter Brand" value="Huawei" class="border border-gray-300 p-2">
+                       <label for="Inverter Module">Inverter Module:</label>
+                       <input type="text" id="Inverter Module" name="Inverter Module" value="SUN2000-3KTL-L1" class="border border-gray-300 p-2">
+                       <label for="Inverter Quantity">Inverter Quantity (units):</label>
+                       <input type="text" id="Inverter Quantity" name="Inverter Quantity" value="30" class="border border-gray-300 p-2">
+                       <label for="P12">Inverter Capacity (kw/unit):</label>
+                       <input type="text" id="Inverter Capacity" name="Inverter Capacity" value="250" class="border border-gray-300 p-2"><br>
+
+                       <label for="P14">Link for upload PV Layout (provide URL of sharepoint):</label><br>
+                       <label for="Link1">Link1 (main):</label>
+                       <input type="text" id="Link1" name="Link1" value="WWW.O365.com/datasharing" class="border border-gray-300 p-2"><br>
+                       <label for="P16">Link2 (backup):</label>
+                       <input type="text" id="Link2" name="Link2" value="WWW.O365.com/datasharing" class="border border-gray-300 p-2"><br>
+
+
+
+
+
+
+
+
+
+                     </div>
+                     <button type="submit" class="inline-block rounded-md bg-primary px-7 py-3 text-center text-base font-medium text-white transition hover:bg-blue-dark">
+                       submit
+                     </button>
+                   </form>
+                </div>
+             </div>
+          </div>
+      </div>
+
+
+
+
+
+
+    <script>
+      const scriptURL3 = 'https://script.google.com/macros/s/AKfycbygYpUO-1fVuy6cXhPmdgR8hQ_c_rNd-nGGCDNBtHLDgF_IAB-9mrG3DsDHVEk-o4d-EQ/exec';
+      const form3 = document.getElementById('submitForm6');
+
+      form3.addEventListener('submit', async e => {
+        e.preventDefault();
+
+        try {
+          const formData = new FormData(form3);
+          const response = await fetch(scriptURL3, { method: 'POST', body: formData });
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+
+          const responseData = await response.json();
+          console.log('Success!', responseData);
+
+          // Optionally, you can add code to handle success, like showing a confirmation message.
+        } catch (error) {
+          console.error('Error!', error.message);
+
+          // Optionally, you can add code to handle errors, like showing an error message.
+        }
+      });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+      const scriptURL1 = 'https://script.google.com/macros/s/AKfycbxxdnDM2b8Sha6tyFbtPVyDm5mgaMOdsGxfv5g3nyEmehJUdFICCy1zaS3QtkXxK-w/exec';
+      const form1 = document.getElementById('submitForm8');
+
+      form1.addEventListener('submit', async e => {
+        e.preventDefault();
+
+        try {
+          const formData = new FormData(form1);
+          const response = await fetch(scriptURL1, { method: 'POST', body: formData });
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+
+          const responseData = await response.json();
+          console.log('Success!', responseData);
+
+          // Optionally, you can add code to handle success, like showing a confirmation message.
+        } catch (error) {
+          console.error('Error!', error.message);
+
+          // Optionally, you can add code to handle errors, like showing an error message.
+        }
+      });
+    </script>
+
+    <script>
+      const scriptURL2 = 'https://script.google.com/macros/s/AKfycbyj1WjvStRoB3sJO-XmW0Tf8dMFsfG6FtPuNto8owf4kQBaiPXEvevcM6HaZ_xRJm_fcQ/exec';
+      const form2 = document.getElementById('submitForm7');
+
+      form2.addEventListener('submit', async e => {
+        e.preventDefault();
+
+        try {
+          const formData = new FormData(form2);
+          const response = await fetch(scriptURL2, { method: 'POST', body: formData });
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+
+          const responseData = await response.json();
+          console.log('Success!', responseData);
+
+          // Optionally, you can add code to handle success, like showing a confirmation message.
+        } catch (error) {
+          console.error('Error!', error.message);
+
+          // Optionally, you can add code to handle errors, like showing an error message.
+        }
+      });
+    </script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Get the tab link with href="#tab0" and add the "active" class
+        var tabLink = document.querySelector('a[href="#tab0"]');
+        if (tabLink) {
+          tabLink.classList.add("active");
+        }
+        // Add click event listener to each tab link
+        var tabLinks = document.querySelectorAll('nav a');
+        tabLinks.forEach(function (tabLink) {
+          tabLink.addEventListener('click', function (event) {
+            // Prevent the default behavior of the link
+            event.preventDefault();
+
+            // Get the target of the clicked link
+            var targetId = this.getAttribute('href').substring(1);
+
+            // Hide all tab contents
+            var tabContents = document.querySelectorAll('article > div');
+            tabContents.forEach(function (tabContent) {
+              tabContent.style.display = 'none';
+            });
+
+            // Show the selected tab content
+            var selectedTab = document.getElementById(targetId);
+            if (selectedTab) {
+              selectedTab.style.display = 'block';
+            }
+          });
+        });
+      });
+    </script>
+
+    <script>
+      function changeIframeSrcTab1(selectedValue) {
+        var iframe = document.getElementById("inspectionIframe");
+        var dropdown = document.getElementById("I1");
+        var selectedOption = dropdown.options[dropdown.selectedIndex];
+        var src = selectedOption.getAttribute("data-src");
+
+        // Set the src based on the selected value
+        iframe.src = src;
+      }
+    </script>
+
+    <script>
+      function changeIframeSrcTab2(selectedValue) {
+        var iframe = document.getElementById("inspectionIframe1");
+        var dropdown = document.getElementById("I3");
+        var selectedOption = dropdown.options[dropdown.selectedIndex];
+        var src = selectedOption.getAttribute("data-src");
+
+        // Set the src based on the selected value
+        iframe.src = src;
+      }
+    </script>
+
+
+
+
+    <script>
+      function changeIframeSrcTab3(selectedValue) {
+        var iframe = document.getElementById("inspectionIframe2");
+        var dropdown = document.getElementById("I5");
+        var selectedOption = dropdown.options[dropdown.selectedIndex];
+        var src = selectedOption.getAttribute("data-src");
+
+        // Set the src based on the selected value
+        iframe.src = src;
+      }
+    </script>
+
+
+    <script>
+      function changeIframeSrcTab4(selectedValue) {
+        var iframe = document.getElementById("inspectionIframe3");
+        var dropdown = document.getElementById("I7");
+        var selectedOption = dropdown.options[dropdown.selectedIndex];
+        var src = selectedOption.getAttribute("data-src");
+
+        // Set the src based on the selected value
+        iframe.src = src;
+      }
+    </script>
+
+
+    <script>
+      function changeIframeSrcTab5(selectedValue) {
+        var iframe = document.getElementById("inspectionIframe4");
+        var dropdown = document.getElementById("I9");
+        var selectedOption = dropdown.options[dropdown.selectedIndex];
+        var src = selectedOption.getAttribute("data-src");
+
+        // Set the src based on the selected value
+        iframe.src = src;
+      }
+    </script>
+
+
+    <script>
+      function changeIframeSrcTab6(selectedValue) {
+        var iframe = document.getElementById("inspectionIframe5");
+        var dropdown = document.getElementById("I11");
+        var selectedOption = dropdown.options[dropdown.selectedIndex];
+        var src = selectedOption.getAttribute("data-src");
+
+        // Set the src based on the selected value
+        iframe.src = src;
+      }
+    </script>
+
+
+
+
+  </section>
+</body>
+
+</html>
