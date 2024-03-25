@@ -551,7 +551,7 @@
 
 
                      </div>
-                     <button type="submit" class="inline-block rounded-md bg-primary px-7 py-3 text-center text-base font-medium text-white transition hover:bg-blue-dark">
+                     <button type="submit" class="inline-block rounded-md bg-primary px-7 py-3 text-center text-base font-medium text-white transition hover:bg-blue-dark onclick="showPopup()">
                        submit
                      </button>
                    </form>
@@ -879,7 +879,12 @@
       }
     </script>
 
-
+    <!-- JavaScript to show popup message -->
+    <script>
+      function showPopup() {
+         alert("Data already submitted, please wait 2 hrs for data processing");
+      }
+    </script>
 
 
   </section>
