@@ -72,7 +72,7 @@
             var password = document.getElementById('password').value;
 
             // Add your logic for checking username and password
-            if (username === 'SCG_EPS' && password === 'Scg12345') {
+            if ((username === 'SCG_EPS' && password === 'Scg12345') || (username === 'SCG_Cleanergy' && password === 'Scg12345')) {
                 window.location.href = 'hyper.html'; // Redirect to index.html
             } else {
                 alert('Invalid username or password');
