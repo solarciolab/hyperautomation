@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <style>
+        /* Body styling */
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -12,36 +13,65 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
-            flex-direction: column; /* Change to column direction */
+            flex-direction: column;
+            background-image: url('C:/Users/niwatjam/Desktop/BG_Cleanergy1.jpg'); /* Your background image path */
+            background-size: cover; /* Cover the whole page with the background image */
+            background-repeat: no-repeat; /* Do not repeat the background image */
+            background-position: center; /* Center the background image */
         }
 
+        /* Overlay styling */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw; /* Full width */
+            height: 100vh; /* Full height */
+            background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black overlay */
+            z-index: 1; /* Ensure the overlay is behind other elements */
+        }
+
+        /* Form styling */
         form {
             width: 300px;
             padding: 20px;
             border: 1px solid #ccc;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-top: 20px; /* Add margin-top to form for separation */
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* White background with 80% opacity */
+            z-index: 2; /* Ensure the form is above the overlay */
         }
 
+        /* h1 styling */
         h1 {
             font-weight: bold;
-            font-size: larger;
+            font-size: 50px; /* Increase font size to 50 pixels */
             margin-bottom: 20px;
+            margin-top: 80px;
+            color: white; /* Keep text color white */
+            z-index: 2; /* Ensure the h1 element is above the overlay */
         }
 
+        /* Label styling */
         label {
             display: block;
             margin-bottom: 8px;
+            font-weight: bold;
+            color: green; /* Make label text green */
+            z-index: 2; /* Ensure the labels are above the overlay */
         }
 
+        /* Input styling */
         input {
             width: 100%;
             padding: 8px;
             margin-bottom: 16px;
             box-sizing: border-box;
+            z-index: 2; /* Ensure the inputs are above the overlay */
         }
 
+        /* Button styling */
         button {
             width: 100%;
             padding: 10px;
@@ -50,11 +80,16 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            z-index: 2; /* Ensure the button is above the overlay */
         }
     </style>
 </head>
+
 <body>
-    <h1>HYPER AUTOMATED SOLAR O&M by CIO</h1>
+    <!-- Add the overlay element -->
+    <div class="overlay"></div>
+
+    <h1>HYPER AUTOMATED SOLAR O&M</h1>
 
     <form id="loginForm">
         <label for="username">Username:</label>
@@ -73,11 +108,12 @@
 
             // Add your logic for checking username and password
             if ((username === 'SCG_EPS' && password === 'Scg12345') || (username === 'SCG_Cleanergy' && password === 'Scg12345')) {
-                window.location.href = 'hyper.html'; // Redirect to index.html
+                window.location.href = 'hyper.html'; // Redirect to hyper.html
             } else {
                 alert('Invalid username or password');
             }
         }
     </script>
 </body>
+
 </html>
