@@ -17,12 +17,12 @@
 
     /* Style the header */
     header {
-      background-color: #ffffff;
       padding: 15px;
       text-align: center;
       font-size: 22px;
       color: black;
       height: 135px;
+      background-color: transparent;
     }
 
     header img {
@@ -36,6 +36,7 @@
       height: 700px;
       background: #ffffff;
       padding: 20px;
+      background-color: transparent;
     }
 
     /* Style the list inside the menu */
@@ -49,8 +50,10 @@
       padding: 20px;
       width: 70%;
       background-color: #F0F7FD;
-      height: 600px;
+      height: 800px;
       overflow: auto; /* Add this line to enable scrolling */
+      background-color: rgba(255, 255, 255, 0.6); /* White background with 80% opacity */
+      z-index: 2; /* Ensure the form is above the overlay */
     }
 
     /* Clear floats after the columns */
@@ -129,7 +132,8 @@
     table {
       border-collapse: collapse;
       width: 100%;
-      background-color: #FFFFFF
+      background-color: rgba(255, 255, 255, 0.01); /* White background with 80% opacity */
+      z-index: 2; /* Ensure the form is above the overlay */
     }
 
     th, td {
@@ -139,7 +143,7 @@
     }
 
     th {
-      background-color: #000000;
+      background-color: #00FF00;
       color: #FFFFFF;
     }
 
@@ -156,29 +160,46 @@
     .small-input-container {
       margin-top: -20px; /* Adjust the margin-top as needed */
     }
+
+
+    body {
+       font-family: Arial, Helvetica, sans-serif;
+       background-image: url('C:/Users/niwatjam/Desktop/BG_Cleanergy1.jpg'); /* Specify the path to your .jpg image */
+       background-size: cover; /* Make the image cover the whole page */
+       background-repeat: no-repeat; /* Do not repeat the image */
+       background-position: center; /* Center the image */
+    }
+
+
+    iframe {
+       background-color: transparent; /* Set background color to transparent */
+       border: none; /* Remove any border */
+    }
+
+
   </style>
 </head>
 
 <body>
   <section>
     <header style="background-image: url('https://cdn-icons-png.freepik.com/512/7364/7364299.png'); background-size: 130px 130px; background-repeat: no-repeat; padding-left: 60px;">
-      <h1>HYPER AUTOMATED SOLAR O&M ( LEVEL#1 )</h1>
+      <h1>HYPER AUTOMATED SOLAR O&M</h1>
     </header>
 
     <nav>
-      <a href="#tab6" class="active" style="background-color: #CCCCCC; color: #fff; text-align: left;"><strong>SECTION1 : INFORMATION</strong></a>
-      <a href="#tab8" style="background-color: #783F04; color: #fff;"><strong>PRE REQUEST</strong></a>
-      <a href="#tab7" style="background-color: #783F04; color: #fff;"><strong>PLANT INPUT DATA</strong></a>
+      <a href="#tab6" class="active" style="background-color: white; color: black; text-align: left;"><strong>SECTION1 : INFORMATION</strong></a>
+      <a href="#tab8" style="background-color: #00FF00; color: #fff;"><strong>PRE REQUEST</strong></a>
+      <a href="#tab7" style="background-color: #00FF00; color: #fff;"><strong>PLANT INPUT DATA</strong></a>
       <br>
-      <a style="background-color: #CCCCCC; color: #fff; text-align: left;"><strong>SECTION2 : RESULT PREVIEW</strong></a>
+      <a style="background-color: white; color: black; text-align: left;"><strong>SECTION2 : RESULT PREVIEW</strong></a>
  
 
-      <a href="#tab0" style="background-color: #073763; color: #fff;"><strong>EXECUTIVE SUMMARY</strong></a>
-      <a href="#tab1" style="background-color: #073763; color: #fff;"><strong>FULL INSPECTION REPORT</strong></a>
-      <a href="#tab2" style="background-color: #073763; color: #fff;"><strong>ANOMALY MAP</strong></a>
-      <a href="#tab3" style="background-color: #073763; color: #fff;"><strong>ANOMALY ANALYSIS & RECOMMENDATIONS</strong></a>
-      <a href="#tab5" style="background-color: #073763; color: #fff;"><strong>THERMO FILM</strong></a>
-      <a href="#tab9" style="background-color: #073763; color: #fff;"><strong>ANOMALY OVERVIEW</strong></a>
+      <a href="#tab0" style="background-color: #00FF00; color: #fff;"><strong>EXECUTIVE SUMMARY</strong></a>
+      <a href="#tab1" style="background-color: #00FF00; color: #fff;"><strong>FULL INSPECTION REPORT</strong></a>
+      <a href="#tab2" style="background-color: #00FF00; color: #fff;"><strong>ANOMALY MAP</strong></a>
+      <a href="#tab3" style="background-color: #00FF00; color: #fff;"><strong>ANOMALY ANALYSIS & RECOMMENDATIONS</strong></a>
+      <a href="#tab5" style="background-color: #00FF00; color: #fff;"><strong>THERMO FILM</strong></a>
+      <a href="#tab9" style="background-color: #00FF00; color: #fff;"><strong>ANOMALY OVERVIEW</strong></a>
     </nav>
 
     <article>
@@ -297,7 +318,8 @@
       <h1>EXECUTIVE SUMMARY</h1>
       <!-- Embedded Video without Autoplay -->
       <P>In summary, the facility identified anomaly issues through the utilization of SEMI-HYPER-AUTOMATED Solution V2.10. The findings encompassed data on the frequency of each anomaly type, module loss statistics (minimum, maximum, and average), and an accompanying Delta T report, all of which are presented below:</p>
-      <iframe id="inspectionIframe3" width="100%" height="600"></iframe>
+      <iframe id="inspectionIframe3" width="100%" height="200" ></iframe>
+
 
      
      </div>
@@ -374,7 +396,7 @@
           This paradigm shift in solar management heralds a new era of sustainability, where solar energy systems operate at peak
           performance, contributing to a greener and more sustainable future.</p>
         <br>
-        <h3><strong>PROCEDURE GUIDE: HYPER AUTOMATED SOLAR O&M LEVEL 1 QUICK USER MANUAL</strong></h3><br>
+        <h3><strong>QUICK USER GUIDELINE</strong></h3><br>
         <ol>
           <li>Prepare and submit preliminary information at least two weeks prior to the initial drone flight, this process will be single time setup and spend time not more than 2 weeks for the whole process </li>
               <ol>
@@ -404,19 +426,16 @@
 
         <br>
         
-        <p>FLOW DIAGRAM FOR HYPER AUTOMATED SOLAR O&M LEVEL#1</p>
-        <div style="width: 640px; height: 360px; overflow: hidden; position: relative; display: flex; justify-content: center; align-items: center;">
-           <div style="position: absolute; top: 0; left: 0;">
-               <!-- Embedded image using Google Drive Viewer -->
-               <iframe src="https://drive.google.com/file/d/1jmjftkpjzLGzPSazr6tX1P7iVgrZ9Lt2/preview" 
-                   width="640" height="360" style="border: none;"></iframe>
-           </div>
+        <h3>WORK FLOW DIAGRAM </h3>
+        <div style="width: 840px; height: 360px; overflow: hidden; position: relative; display: flex; justify-content: center; align-items: center;">
+            <img src="C:\Users\niwatjam\Desktop\Diagram_prerequest.png" 
+               width="640" height="360" style="object-fit: cover;">
         </div>
 
 
 
 
-        <h3>POTENTIAL CASE EXAMPLES DETECTED BY HYPER AUTOMATED SOLAR O&M ( LEVEL#1 )</h3>
+        <h3>POTENTIAL CASE EXAMPLES DETECTED BY HYPER AUTOMATED SOLAR O&M</h3>
 
         <table>
           <tr>
