@@ -20,17 +20,6 @@
             background-position: center; /* Center the background image */
         }
 
-        /* Overlay styling */
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100vw; /* Full width */
-            height: 100vh; /* Full height */
-            background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black overlay */
-            z-index: 1; /* Ensure the overlay is behind other elements */
-        }
-
         /* Form styling */
         form {
             width: 300px;
@@ -39,18 +28,25 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
-            background-color: rgba(255, 255, 255, 0.9); /* White background with 80% opacity */
-            z-index: 2; /* Ensure the form is above the overlay */
+            background-color: rgba(255, 255, 255, 0.9); /* White background with 90% opacity */
+        }
+
+        /* Div for the heading with background */
+        .highlight {
+            padding: 1px; /* Add padding around the text */
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.8); /* Light white background with 50% transparency */
         }
 
         /* h1 styling */
         h1 {
             font-weight: bold;
-            font-size: 40px; /* Increase font size to 50 pixels */
-            margin-bottom: 20px;
-            margin-top: 80px;
-            color: #5dbb49; /* Keep text color white */
-            z-index: 2; /* Ensure the h1 element is above the overlay */
+            font-size: 50px; /* Increase font size to 50 pixels */
+            margin-bottom: 1px;
+            margin-top: 1px;
+            margin-left: 10px;
+            margin-right: 10px;
+            color: #5dbb49; /* Keep text color green */
         }
 
         /* Label styling */
@@ -59,7 +55,6 @@
             margin-bottom: 8px;
             font-weight: bold;
             color: #5dbb49; /* Make label text green */
-            z-index: 2; /* Ensure the labels are above the overlay */
         }
 
         /* Input styling */
@@ -68,7 +63,6 @@
             padding: 8px;
             margin-bottom: 16px;
             box-sizing: border-box;
-            z-index: 2; /* Ensure the inputs are above the overlay */
         }
 
         /* Button styling */
@@ -80,16 +74,15 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            z-index: 2; /* Ensure the button is above the overlay */
         }
     </style>
 </head>
 
 <body>
-    <!-- Add the overlay element -->
-    <div class="overlay"></div>
-
-    <h1>HYPER AUTOMATED SOLAR O&M</h1>
+    <!-- Use a div with the class 'highlight' to wrap the text and add the background -->
+    <div class="highlight">
+        <h1>  HYPER AUTOMATED SOLAR O&M  </h1>
+    </div>
 
     <form id="loginForm">
         <label for="username">Username:</label>
